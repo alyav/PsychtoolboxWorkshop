@@ -49,47 +49,18 @@ imageHeight   = scr_rect(3)/6;
 imageDims   = [centerX-imageLength centerY-imageHeight centerX+imageLength centerY+imageHeight];
 
 %% DRAW IMAGES 
-% First we will draw the 5 images, one after the other, with each image
-% remaining on the screen for 2 seconds
-for loopImages = 1:length(choseImage) % loop the length of the number of images we found in the folder
-    Screen('DrawTexture',w, imageTex{loopImages}, [], imageDims, 0); % draw a new image each loop
+for loopImages = 1:length(choseImage)
+    Screen('DrawTexture',w, imageTex{loopImages}, [], imageDims, 0); 
     Screen('Flip',w);
-    WaitSecs(1); % Leave each image on the screen for 1 second 
-end
-
-% Lets clear the screen and take a second pause before continuing
-Screen('Flip',w);
-WaitSecs(1);
-
-% Now lets draw the same images again but have them fade in and out 
-% We will do this by modulating the global alpha transparency value
-% specified in the Screen('DrawTexture') options. The range is 0 = fully
-% transparent to 1 = fully opaque.
- 
-alphaMod = 0; % we will slowly adjust this each frame until it reaches 1, and then adjust it back down
-
-for loopImages = 1:length(choseImage) % loop the length of the number of images we found in the folder
-    while alphaMod < 1 %while the alpha is less than 1, we will keep flipping and slowly adjusting the transparency
-        alphaMod = alphaMod+.01;
-        Screen('DrawTexture',w, imageTex{loopImages}, [], imageDims, 0,[],alphaMod); % draw a new image each loop
-        Screen('Flip',w);
-    end
-    
-    WaitSecs(1); % Lets leave it for a second at full contrast
-    
-    while alphaMod > 0 %now we do the same, but in reverse, slowly reducing the alpha back down to 0
-        alphaMod = alphaMod-.01;
-        Screen('DrawTexture',w, imageTex{loopImages}, [], imageDims, 0,[],alphaMod); % draw a new image each loop
-        Screen('Flip',w);
-    end
+    WaitSecs(2);
 end
  
 sca;
 
-catch
+catch  
     sca;
     ShowCursor;
-    psychrethrow(psychlasterror)
+    psychrethrow(psychlasterror);
 end
     
 

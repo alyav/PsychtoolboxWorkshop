@@ -56,6 +56,6 @@ try
 catch  
     sca;
     ShowCursor;
-    psychrethrow(psychlasterror)
+    psychrethrow(psychlasterror);
 end
     
