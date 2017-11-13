@@ -51,7 +51,7 @@ sca; % close all screens
 catch  
     sca; % closes the screens
     ShowCursor; % shows the mouse cursor
-    psychrethrow(psychlasterror); %prints error message to command window 
+    psychrethrow(psychlasterror) %prints error message to command window 
 end
     
 
