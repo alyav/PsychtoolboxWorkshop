@@ -1,4 +1,4 @@
-%% Example 5: draw a circle moving across the screen
+%% Example 6: draw a circle moving across the screen
  
 % Clear the workspace and close screens
 sca;         % closes all screens
