@@ -46,7 +46,6 @@ try
         for iRect = 1:2
             Screen('FillRect',w,rectangleColour(iRect,:),rectanglePosition); % Draw the rectangle to the buffer
             vbl = Screen('Flip', w, vbl + (waitframes - 0.5) * ifi); % flip the buffer to the screen
-            currentTime = GetSecs; % update the time passed
         end
     end
     
