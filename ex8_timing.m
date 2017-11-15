@@ -34,33 +34,7 @@ try
     % Get flip and refresh rates
     ifi = Screen('GetFlipInterval', w); % the inter-frame interval (minimum time between two frames)
     hertz = FrameRate(w); % check the refresh rate of the screen
-    
-    %% MAKE A BOX OUTLINE WITH A FIXATION CROSS IN THE CENTER
-    % We will first specify the box outline
-    rectangle         = [0 0 scr_rect(3)/3 scr_rect(4)/2]; % dimensions of the rectangle
-    rectangleColour   = white; % outline colour
-    rectanglePosition = CenterRectOnPointd(rectangle,centerX,centerY); % centers the rectangle on the XY coord we specify
-    rectangleWidth    = 10; % the line thickness in pixels
-    
-    % And now the fixation cross
-    fixation          = rectangle(3)/15; % size of the lines relative to the size of the rectangle
-    fixationColour    = white; % cross colour
-    fixationWidth     = 3; % the line thickness in pixels
-    fixationPosition  = [-fixation fixation 0 0; 0 0 -fixation fixation]; % coordinates for drawing relative to 0
-    
-    %% MAKE GABORS
-    gaborColour       = [0 255 0]; %green
-    gaborSize         = rectangle(3)*.8; % dimension of the gabor relative to the rectangle
-    phase             = 0;
-    freq              = 12/gaborSize; % number of black-white cycles divided by the size gives us the spatial freq
-    sigma             = gaborSize/5; %sigma of gaussian
-    contrast          = 1;
-    gaborSpec         = [phase;freq;sigma;contrast;1;0;0;0];
-    
-    orientation       = 0:45:180; % in degrees 
-    gaborTex          = CreateProceduralGabor(w,gaborSize,gaborSize,[],[],0); % Make the gabor texture
-    
- 
+     
    %% MAKE RECTANGLES
     rectangle         = [0 0 scr_rect(3)/3 scr_rect(4)/2]; % dimensions of the rectangle
     rectangleColour   = [0 255 0; 255 0 0]; % The fill colours - one green and red
@@ -81,8 +55,8 @@ try
             vbl = Screen('Flip', w, vbl + (waitframes - 0.5) * ifi); % flip the buffer to the screen
         end
     end
-    
-    %Timing example 2 - using the internal clock
+%     
+%     %Timing example 2 - using the internal clock
     for reps = 1:5 %how many times do we want to alternate
         for iRect = 1:2
              startTime = GetSecs; % get the time right now for 0point

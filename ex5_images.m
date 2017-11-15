@@ -48,22 +48,22 @@ try
     imageHeight   = scr_rect(3)/6;
     imageDims   = [centerX-imageLength centerY-imageHeight centerX+imageLength centerY+imageHeight];
     
-    %% DRAW IMAGES
-    for loopImages = 1:length(choseImage)
-        Screen('DrawTexture',w, imageTex{loopImages}, [], imageDims, 0);
-        Screen('Flip',w);
-        WaitSecs(2);
-    end
-    %  Lets clear the screen and take a second pause before continuing
-    Screen('Flip',w);
-    WaitSecs(1);
+%     %% DRAW IMAGES
+%     for loopImages = 1:length(choseImage)
+%         Screen('DrawTexture',w, imageTex{loopImages}, [], imageDims, 0);
+%         Screen('Flip',w);
+%         WaitSecs(2);
+%     end
+%     %  Lets clear the screen and take a second pause before continuing
+%     Screen('Flip',w);
+%     WaitSecs(1);
     
     %% DRAW IMAGES FADING IN AND OUT
     % Now lets draw the same images again but have them fade in and out
     % We will do this by modulating the global alpha transparency value
     % specified in the Screen('DrawTexture') options. The range is 0 = fully
     % transparent to 1 = fully opaque.
-    
+%     
     alphaMod = 0; % we will slowly adjust this each frame until it reaches 1, and then adjust it back down
     
     for loopImages = 1:length(choseImage) % loop the length of the number of images we found in the folder

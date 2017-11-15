@@ -44,7 +44,7 @@ try
     
     %% MAKE GABORS
     gaborColour       = [0 255 0]; %green
-    gaborSize         = rectangle(3)*.8; % dimension of the gabor relative to the rectangle
+    gaborSize         = round(rectangle(3)*.8); % dimension of the gabor relative to the rectangle
     phase             = 0;
     freq              = 12/gaborSize; % number of black-white cycles divided by the size gives us the spatial freq
     sigma             = gaborSize/5; %sigma of gaussian
