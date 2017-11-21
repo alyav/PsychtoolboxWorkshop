@@ -31,7 +31,7 @@ try
     hertz = FrameRate(w); % check the refresh rate of the screen
     
     %% GET IMAGES AND CONVERT THEM TO TEXTURES
-    folderPath  = '/Users/alya/Dropbox/DOCS/WORKSHOPS/PsychtoolboxWorkshop/sample_scripts/images/'; % set the dir for where you are keeping the images
+    folderPath  = './images/'; % set the dir for where you are keeping the images
     getImage    = dir(fullfile(folderPath, '*.jpg')); %gets a list of names for all the jpg files in the folder
     choseImage  = 1:length(getImage); % how many images do we have?
     choseImage  = Shuffle(choseImage); % make a vector the length of the number of images and then shuffle the order
