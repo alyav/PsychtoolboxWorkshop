@@ -31,12 +31,7 @@ grey  = white/2;
 ifi = Screen('GetFlipInterval', w); % the inter-frame interval (minimum time between two frames)
 hertz = FrameRate(w); % check the refresh rate of the screen
 waitframes = 1; %how many frames to wait before flipping
-
-% define keys that we want
-escapeKey = KbName('ESCAPE');
-greenKey = KbName('LeftShift');
-redKey = KbName('RightShift');
-
+ 
 %% TRACK AND UPDATE MOUSE %%
 mouseMove=0; buttons=0; %will be updated in the loop
 vbl = Screen('Flip',w); %initial flip
