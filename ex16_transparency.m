@@ -92,7 +92,7 @@ try
         
         %____ get response and RT ____%
         resp = 0; %we will update this in the response loop
-        
+         FlushEvents;
         while resp == 0 %while there is no logged response
             [keyIsDown,secs,keyCode] = KbCheck; %continuously checks the state of the keyboard
             if keyIsDown % if it detects a key has been pressed
@@ -121,7 +121,7 @@ try
         
         Screen('Flip',w); %and lets put the blank screen back up
         WaitSecs(1); %wait a second before starting the next trial
-        FlushEvents;
+ 
     end
     
     % Now the experiment is finished, but lets quickly tally up the score
