@@ -39,6 +39,7 @@ try
     WaitSecs(1);
     
     %% PLAY A SOUND FILE 
+    cd ./sounds
     [soundCorrect,freq] = psychwavread('correct.wav'); %read in the sound files, gives us the sampled data and sample rate
     wave = soundCorrect';
     nrchannels = size(wave,1); % Check how many channels in the sound file
