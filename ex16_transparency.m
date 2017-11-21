@@ -6,7 +6,7 @@ clear all;   % clear all variables
 
 input ('start>>>','s'); % prints to command window
 
- 
+
 showDebugText = true;
 
 try
@@ -22,8 +22,17 @@ try
     
     %% SETUP SCREEN %%
     PsychDefaultSetup(2); % Executes the AssertOpenGL command & KbName('UnifyKeyNames') & normalizes colour range
-    Screen('Preference', 'SkipSyncTests', 2); % DO NOT KEEP THIS IN EXPERIMENTAL SCRIPTS! 
+    Screen('Preference', 'SkipSyncTests', 2); % DO NOT KEEP THIS IN EXPERIMENTAL SCRIPTS!
     PsychDebugWindowConfiguration([],.5);
+    
+    Screen('Preference', 'Verbosity', 3);
+    %0 - No output at all.
+    %1 - Only severe error messages.
+    %2 - Errors and warnings.
+    %3 - Additional information, e.g., startup output when opening an onscreen window.
+    %4 - Very verbose output, mostly useful for debugging PTB itself.
+    %5 - Even more information and hints. Usually not what you want.
+    
     
     % Setup screens
     getScreens   = Screen('Screens'); % Gets the screen numbers, typically 0 = primary and 1 = external
@@ -38,7 +47,7 @@ try
     % Open a psychtoolbox screen
     [w, scr_rect] = PsychImaging('OpenWindow',chosenScreen,black,rect); % here scr_rect gives us the size of the screen in pixels
     [centerX, centerY] = RectCenter(scr_rect); % get the coordinates of the center of the screen
-     
+    
     % Get flip and refresh rates
     ifi = Screen('GetFlipInterval', w); % the inter-frame interval (minimum time between two frames)
     hertz = FrameRate(w); % check the refresh rate of the screen
@@ -66,13 +75,13 @@ try
         
         %____ get position ____%
         if trial.position(n) == 1 % if this is a LEFT trial
-           if showDebugText,fprintf('\n\n Left'), end    %lets print to the command window to see 
+            if showDebugText,fprintf('\n\n Left'), end    %lets print to the command window to see
             rectPosition    = CenterRectOnPointd(rectSize,centerX-200,centerY); %center it a bit left of center
         elseif trial.position(n) == 2 % if this is a RIGHT trial
-            if showDebugText,fprintf('\n\n Right'), end 
+            if showDebugText,fprintf('\n\n Right'), end
             rectPosition    = CenterRectOnPointd(rectSize,centerX+200,centerY); %center it a bit right of center
         end
-      
+        
         %____ present the stimulus ____%
         % now lets present the rectangle for 500ms
         Screen('FillRect',w,white,rectPosition); % draw the rect
@@ -101,17 +110,17 @@ try
         
         %____ give feedback ____%
         if trial.response(n) == trial.position(n) %if it's a correct response
-             DrawFormattedText(w,'correct!','center','center',[0 255 0]); % draw feedback response
-             trial.correct(n) = 1; %lets also note if that trial was correct
+            DrawFormattedText(w,'correct!','center','center',[0 255 0]); % draw feedback response
+            trial.correct(n) = 1; %lets also note if that trial was correct
         else
             DrawFormattedText(w,'oops!','center','center',[255 0 0]); % draw feedback response
             trial.correct(n) = 0; %and if it was wrong we'll put a 0
-        end 
+        end
         Screen('Flip',w);
         WaitSecs(1); %leave it on the screen for a sec
         
-        Screen('Flip',w); %and lets put the blank screen back up 
-        WaitSecs(1); %wait a second before starting the next trial 
+        Screen('Flip',w); %and lets put the blank screen back up
+        WaitSecs(1); %wait a second before starting the next trial
         FlushEvents;
     end
     
@@ -127,9 +136,9 @@ try
     
     Screen('DrawText',w,feedbackText,centerX-500,centerY,white); % draw the feedback text
     Screen('Flip',w);
-    WaitSecs(3); %wait 3 secs before closing the screen 
+    WaitSecs(3); %wait 3 secs before closing the screen
     sca; %close the screen
-     
+    
 catch
     sca;
     ShowCursor;
