@@ -48,7 +48,7 @@ Screen('Flip',w);
 % Now we are going to continuously check to see if a key has been pressed,
 % if either shift key is pressed, we will change the colour of the
 % rectangle accordingly.
-
+FlushEvents;
 while 1 
     [keyIsDown,secs,keyCode] = KbCheck; %continuously checks the state of the keyboard 
     if keyIsDown % if it detects a key has been pressed
