@@ -1,4 +1,4 @@
-%% Example 12: Getting subject/block/run information
+%% Example 13: Getting subject/block/run information
   
 % Clear the workspace and close screens
 sca;         % closes all screens
