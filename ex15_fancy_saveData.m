@@ -18,6 +18,7 @@ subject.number = str2double(getSub{1}); % convert the string to a number
 saveData=0;
 if subject.number ~=99 %if it's not a test run, lets get more info about the sub
     saveData = 1; % if it's not a test run, we also want to save the data
+    rand('state', sum(100*clock)); %generate a new seed for the randomiser
 end
 
 % Lets set some setting for saving later
