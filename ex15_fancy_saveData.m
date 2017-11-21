@@ -183,6 +183,7 @@ try
         
         Screen('Flip',w); %and lets put the blank screen back up 
         WaitSecs(1); %wait a second before starting the next trial 
+        FlushEvents;
     end
     
     % Now the experiment is finished, but lets quickly tally up the score
